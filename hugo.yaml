@@ -1,3 +1,13 @@
+baseURL: "https://votre-pseudo.github.io/"
+title: "Malak Ines MAHDAOUI | Portfolio"
+theme: "github.com/hugo-toha/toha/v4"
+
+# Paramètres de base
+params:
+  # Ton nom d'utilisateur GitHub
+  github_user: "malak-mahdaoui"
+  # Ton dépôt (ex: malak-ines-mahdaoui.github.io)
+  github_repo: "malak-ines-mahdaoui.github.io"
 module:
   hugoVersion:
     min: "0.146.0"
