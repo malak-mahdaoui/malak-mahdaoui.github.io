@@ -19,20 +19,14 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Setup Go
-        uses: actions/setup-go@v4
-        with:
-          go-version: '1.21'
-
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v3
         with:
           hugo-version: 'latest'
-          extended: true
+          extended: true # Obligatoire pour Toha
 
       - name: Build with Hugo
         run: |
-          hugo mod download
           hugo --minify
 
       - name: Upload artifact
