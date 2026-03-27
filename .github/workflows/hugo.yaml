@@ -23,7 +23,18 @@ jobs:
         uses: peaceiris/actions-hugo@v3
         with:
           hugo-version: 'latest'
-          extended: true # Obligatoire pour Toha
+          extended: true
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install Dependencies
+        run: |
+          # Cette commande force Hugo à créer le fichier pour installer Bootstrap
+          hugo mod npm pack
+          npm install
 
       - name: Build with Hugo
         run: |
