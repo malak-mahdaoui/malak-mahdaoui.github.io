@@ -1,0 +1,24 @@
+# Copyright Notice
+copyright: "© 2026 Malak Ines MAHDAOUI. All Rights Reserved."
+
+# A disclaimer notice for the footer.
+disclaimer: "This portfolio showcases my academic projects, professional experiences, and research in AI & Data Science. All project materials and reports are for informational purposes."
+
+# Meta description for your site. (Aide le référencement Google)
+description: "Professional portfolio of Malak Ines MAHDAOUI, AI & Data Science Engineering Student at ESTIN. Discover my projects in Deep Learning, Medical Data Analysis, and Reinforcement Learning."
+
+# specify the list of custom menus that you want to show in the top navbar.
+customMenus:
+- name: "ESTIN"
+  url: "https://www.estin.dz"
+  hideFromNavbar: false
+  showOnFooter: true
+
+# Specify OpenGraph Headers (Ce qui s'affiche quand tu partages ton lien sur LinkedIn/WhatsApp)
+openGraph:
+  title: "Malak Ines MAHDAOUI | AI & Data Science Portfolio"
+  type: website
+  description: "Engineering student specialized in AI, Computer Vision, and Data Science. Explorer of BioStat-QC and Advanced Anti-Spoofing systems."
+  # Assure-toi d'avoir une photo de toi dans assets/images/author/malak.png ou change le chemin
+  image: "images/author/malak.png" 
+  url: "https://malak-mahdaoui.github.io"

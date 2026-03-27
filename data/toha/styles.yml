@@ -1,3 +1,4 @@
+# Configuration des styles de bibliothèques externes
 flags:
   styles:
     - flag-icons/css/flag-icons
@@ -12,10 +13,14 @@ syntaxhighlight:
   services:
     hljs:
       styles:
+      # Optionnel : Tu peux changer 'atom-one-dark' par 'github-dark' ou 'monokai' 
+      # si tu préfères un autre style pour tes blocs de code techniques.
       - highlight.js/scss/atom-one-dark
 
 math:
   services:
+    # Très important pour tes rapports sur le Reinforcement Learning et l'IA
+    # Garde KaTeX activé pour afficher les formules mathématiques proprement.
     katex:
       styles:
       - katex/dist/katex

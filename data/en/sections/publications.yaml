@@ -1,0 +1,75 @@
+# section information
+section:
+  name: "Technical Reports & Research"
+  id: publications
+  enable: true
+  weight: 6
+  showOnNavbar: true
+
+# Filtres pour aider le recruteur
+buttons:
+- name: All
+  filter: "all"
+- name: "AI & RL"
+  filter: "ai"
+- name: "Health Data"
+  filter: "health"
+- name: "Security"
+  filter: "security"
+
+publications:
+  # 1. RAPPORT DE STAGE CHU (Terminé - Très important)
+  - title: "Analyse de Données Médicales : Optimisation du Suivi Biologique"
+    publishedIn:
+      name: "Rapport de Stage - CHU Sétif"
+      date: "Septembre 2025"
+      url: "files/Rapport_de_stage_chu.pdf"
+    authors:
+      - name: "Malak Ines MAHDAOUI"
+    paper:
+      summary: "Étude approfondie sur l'analyse des flux de données au sein du laboratoire de biochimie. Ce rapport détaille l'identification des anomalies de mesure et l'optimisation des processus de contrôle qualité."
+      url: "files/Attestation_stage_CHU.pdf"
+    categories: ["health"]
+    tags: ["Data Analysis", "Healthcare", "Statistics"]
+
+  # 2. RAPPORT REINFORCEMENT LEARNING (Terminé)
+  - title: "Apprentissage par Renforcement appliqué au Trafic Routier (SUMO)"
+    publishedIn:
+      name: "Projet Académique - ESTIN"
+      date: "Décembre 2024"
+      url: "files/Reinforcement Learning for Lane-Changing Decisions on highways.pdf"
+    authors:
+      - name: "Malak Ines MAHDAOUI"
+    paper:
+      summary: "Conception et entraînement d'un agent autonome capable de prendre des décisions de changement de voie. Comparaison des performances entre le Q-Learning classique et le Deep RL (PPO)."
+      url: "#"
+    categories: ["ai"]
+    tags: ["Reinforcement Learning", "Python", "Simulation"]
+
+  # 3. ANTI-SPOOFING (En cours - Recherche)
+  - title: "Détection de Liveness par Grossissement Vidéo Eulérien (EVM)"
+    publishedIn:
+      name: "Research Paper (In Progress)"
+      date: "2026"
+      url:  "#"
+    authors:
+      - name: "Malak Ines MAHDAOUI"
+    paper:
+      summary: "Projet de recherche sur la lutte contre l'usurpation d'identité faciale. Utilisation de l'EVM pour amplifier les micro-mouvements (pouls) afin de distinguer un humain d'une photo."
+      url: "#"
+    categories: ["ai", "security"]
+    tags: ["Computer Vision", "Deep Learning", "Anti-Spoofing"]
+
+  # 4. RAPPORT SÉCURITÉ / ALGÉRIE POSTE (Terminé)
+  - title: "Audit et Observation des Infrastructures Réseaux et Sécurité"
+    publishedIn:
+      name: "Rapport de Stage - Algérie Poste"
+      date: "Juillet 2024"
+      url: "files/Rapport_de_stage_sec.pdf"
+    authors:
+      - name: "Malak Ines MAHDAOUI"
+    paper:
+      summary: "Analyse de l'architecture réseau et des protocoles de sécurité utilisés dans une grande institution financière publique. Focus sur la gestion des bases de données et la maintenance préventive."
+      url: "files/Att_stage_sec copy.pdf"
+    categories: ["security"]
+    tags: ["Cybersecurity", "Network", "Infrastructure"]

@@ -1,0 +1,31 @@
+# section information
+section:
+  name: "Achievements"
+  id: achievements
+  enable: true
+  weight: 10
+  showOnNavbar: true
+  background: "#ffffff"
+
+achievements:
+  
+  - title: "Triple Lauréate du Baccalauréat"
+    icon: "fas fa-graduation-cap"
+    image: "images/sections/achievements/bac.png"
+    summary: "Parcours d'excellence unique avec l'obtention de **3 Baccalauréats** (Math-Technique & Scientifique) avec mentions **Très Bien (16.78)** et Bien."
+
+  - title: "Leadership Associatif & Cyber-sécurité"
+    icon: "fas fa-user-shield"
+    image: "images/sections/achievements/cyb.jpeg"
+    summary: "Direction logistique et technique du **Nexzero CTF** et **Ideatech #2**. Gestion réussie de plus de 100 participants."
+
+  - title: "Professional Data Analyst Certification"
+    icon: "fas fa-chart-line"
+    # Ici on laisse sans image pour varier le design des cartes
+    image: "images/sections/achievements/d.png"
+    summary: "Certification de niveau industriel délivrée par **DataCamp**. Expertise validée en nettoyage de données et analyse statistique."
+
+  - title: "Engagement Communautaire ByteCraft"
+    icon: "fas fa-hands-helping"
+    image: "images/sections/achievements/b.png"
+    summary: "Distinction reçue pour une contribution exceptionnelle à la croissance de la communauté scientifique de l'**ESTIN** (2021-2022)."

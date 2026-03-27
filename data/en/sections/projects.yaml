@@ -1,0 +1,66 @@
+# section information
+section:
+  name: Projects
+  id: projects
+  enable: true
+  weight: 5
+  showOnNavbar: true
+
+# filter buttons (Pour trier tes projets par catégorie)
+buttons:
+- name: All
+  filter: "all"
+- name: AI & Data Science
+  filter: "ai"
+- name: Web Development
+  filter: "web"
+- name: Academic
+  filter: "academic"
+
+# Ton catalogue de projets
+projects:
+- name: "BioStat-QC"
+  role: Developer
+  timeline: "2025 - 2026"
+  repo: "https://github.com/malak-mahdaoui/LaboFlow-Analyzer.git" # Change si besoin
+  summary: "A medical quality control web application that automates Westgard rules interpretation and generates real-time Levey-Jennings charts using Flask and Chart.js."
+  tags: ["web", "academic", "python", "flask"]
+
+- name: "Autonomous Lane-Changing (SUMO)"
+  icon: "fas fa-car"
+  role: AI Developer
+  timeline: "2025"
+  repo : "https://github.com/ferielsadok/Reinforcement-Learning-for-Lane-Changing-Decisions-on-highways.git"
+  summary: "Implemented Q-Learning (from scratch) and Deep RL (Stable Baselines3) to train an autonomous vehicle to navigate highways and avoid obstacles in a SUMO environment."
+  tags: ["ai", "academic", "reinforcement-learning", "python"]
+
+- name: "Facial Anti-Spoofing (EVM)"
+  icon: "fas fa-user-shield"
+  role: Research Intern
+  timeline: "2026 - Present"
+  repo: "https://github.com/malak-mahdaoui/Facial-Anti-Spoofing-system-using-Motions-Magnification.git"
+  summary: "Research project using Eulerian Video Magnification (EVM) to detect pulse and micro-motions for preventing facial recognition spoofing attacks."
+  tags: ["ai", "academic", "computer-vision", "research"]
+
+- name: "LSTM Text Generation"
+  icon: "fas fa-pen-nib"
+  role: Developer
+  timeline: "2025"
+  repo: "https://github.com/malak-mahdaoui/Character-Level-Language-Model-using-LSTM.git"
+  summary: "Character-level language model built with PyTorch to learn and generate text in the style of specific authors using Recurrent Neural Networks (LSTM)."
+  tags: ["ai", "nlp", "pytorch"]
+
+- name: "ABPSCHOOLE"
+  icon: "fas fa-school"
+  role: Software Engineer
+  timeline: "2022 - 2023"
+  summary: "Comprehensive desktop application designed for school management, handling student records, grading, and administrative workflows."
+  tags: ["web", "academic", "database"]
+
+- name: "3D Ball Game (Unity)"
+  icon: "fas fa-gamepad"
+  role: Game Developer
+  timeline: "2022"
+  repo: "https://github.com/malak-mahdaoui/ball-game.git"
+  summary: "Physics-based 3D game developed in Unity/C#, focusing on vector mathematics, rigid-body dynamics, and asset management via Blender."
+  tags: ["hobby", "unity", "csharp"]

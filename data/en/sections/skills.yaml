@@ -1,0 +1,65 @@
+# section information
+section:
+  name: Skills
+  id: skills
+  enable: true
+  weight: 2
+  showOnNavbar: true
+  filter: true
+
+# filter buttons
+buttons:
+- name: All
+  filter: "all"
+- name: AI & Data Science
+  filter: "ai"
+- name: Development
+  filter: "dev"
+- name: Design
+  filter: "design"
+- name: Others
+  filter: "others"
+
+# Your Skills (Correction avec icônes au lieu de logos inexistants)
+skills:
+- name: Python
+  icon: "fab fa-python"
+  summary: "Main language for AI and Data Science. Experienced in Machine Learning, NLP, and Deep Learning projects."
+  categories: ["ai", "dev"]
+  url: "https://www.python.org/"
+
+- name: Machine Learning
+  icon: "fas fa-brain"
+  summary: "Certified by IBM and Stanford (Supervised/Unsupervised Learning). Experienced with Scikit-learn and statistical modeling."
+  categories: ["ai"]
+
+- name: Data Analysis
+  icon: "fas fa-chart-bar"
+  summary: "Associate Data Analyst (DataCamp Certified). Expert in data pipelines, SQL, NoSQL, and visualization (Talend, PostgreSQL)."
+  categories: ["ai"]
+
+- name: Deep Learning & Vision
+  icon: "fas fa-eye"
+  summary: "Specialized in Computer Vision and Image Processing. Working on motion magnification and AI agents."
+  categories: ["ai"]
+
+- name: Front-End Development
+  icon: "fas fa-code"
+  summary: "Building modern web applications using React, HTML5, and CSS3. Focused on creating responsive interfaces."
+  categories: ["dev"]
+
+- name: UI/UX Design
+  icon: "fab fa-figma"
+  summary: "Designing intuitive user experiences and interfaces using Figma and Blender (3D assets)."
+  categories: ["design"]
+
+- name: Cybersecurity
+  icon: "fas fa-user-shield"
+  summary: "Applied Cryptography (University of London certified) and network security. Organizer of Nexzero CTF."
+  categories: ["others"]
+
+- name: Git & GitHub
+  icon: "fab fa-github"
+  summary: "Advanced version control for collaborative projects and open-source contributions."
+  categories: ["dev", "others"]
+  url: "https://github.com/malak-mahdaoui"

@@ -1,0 +1,24 @@
+- name: "Introduction to Machine Learning: Supervised Learning"
+  url: "/Introduction to Machine Learning.pdf"
+  organization: "University of Colorado Boulder"
+  issuedDate: "2025-09-10"
+
+- name: "Natural Language Processing in Python"
+  url: "/Natural Language Processing in Python.pdf"
+  organization: "DataCamp"
+  issuedDate: "2025-09-12"
+
+- name: "Associate Data Analyst"
+  url: "/AssociationDataAnalyse.pdf"
+  organization: "DataCamp"
+  issuedDate: "2025-09-10"
+
+- name: "Introduction to Artificial Intelligence (AI)"
+  url: "/Introduction to Artificial Intelligence (AI).pdf"
+  organization: "IBM"
+  issuedDate: "2025-09-10"
+
+- name: "Introduction to Applied Cryptography"
+  url: "/Introduction to Applied Cryptography.pdf"
+  organization: "University of London"
+  issuedDate: "2024-07-03"

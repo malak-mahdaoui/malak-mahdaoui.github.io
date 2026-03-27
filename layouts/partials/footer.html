@@ -1,4 +1,4 @@
-{{/*  variables for enabling/disabling parts of the footer  */}}
+{{/* variables for enabling/disabling parts of the footer  */}}
 {{ $footerEnabled      := site.Params.footer.enable             | default true }}
 {{ $navigationEnabled  := site.Params.footer.navigation.enable  | default true }}
 {{ $customMenusEnabled := site.Params.footer.navigation.customMenus | default true }}
@@ -7,7 +7,7 @@
 {{ $credentialsEnabled := site.Params.footer.credentials.enable | default true }}
 {{ $disclaimerEnabled  := site.Params.footer.disclaimer.enable  | default false }}
 
-{{/*  Keep backward compatibility for the newsletter function */}}
+{{/* Keep backward compatibility for the newsletter function */}}
 {{ if site.Params.newsletter }}
   {{ if site.Params.newsletter.enable }}
     {{ $newsletterEnabled = true }}
@@ -47,23 +47,7 @@
     {{ $disclaimer = $siteConfig.disclaimer }}
   {{ end }}
 
-  {{/*  footer logos  */}}
-  {{ $themeLogo := "/images/theme-logo.png" }}
-  {{ $hugoLogo := "/images/hugo-logo.svg" }}
-
-  {{/* resize the logos. don't resize svg because it is not supported */}}
-  {{ $themeLogo:= resources.Get $themeLogo}}
-  {{ if and $themeLogo (ne $themeLogo.MediaType.SubType "svg") }}
-    {{ $themeLogo = $themeLogo.Resize "32x" }}
-  {{ end }}
-  {{ $themeLogo = $themeLogo.RelPermalink}}
-
-  {{ $hugoLogo:= resources.Get $hugoLogo}}
-  {{ if and $hugoLogo (ne $hugoLogo.MediaType.SubType "svg")}}
-    {{ $hugoLogo = $hugoLogo.Resize "32x" }}
-  {{ end }}
-  {{ $hugoLogo = $hugoLogo.RelPermalink}}
-
+  
   <footer id="footer" class="container-fluid text-center align-content-center footer pb-2">
     <div class="container pt-5">
       <div class="row text-start">
@@ -142,13 +126,11 @@
           </ul>
         </div>
         {{ end }}
-        <!-------------- Newsletter --------------->
         {{ if $newsletterEnabled }}
           {{ $provider := site.Params.footer.newsletter.provider }}
           <div class="col-md-4 col-sm-12">
             <p>{{ i18n "newsletter_text" }}</p>
-            {{ if and (eq $provider "mailchimp") site.Params.footer.newsletter.mailchimpURL }}  <!-- mailchimp -->
-              <form
+            {{ if and (eq $provider "mailchimp") site.Params.footer.newsletter.mailchimpURL }}  <form
                 action="{{ site.Params.footer.newsletter.mailchimpURL }}"
                 method="post"
                 id="mc-embedded-subscribe-form"
@@ -195,22 +177,9 @@
     {{ if $credentialsEnabled }}
     <hr />
     <div class="container">
-      <div class="row text-start">
-        <div class="col-md-4">
-          <a id="theme" href="https://github.com/hugo-toha/toha" target="_blank" rel="noopener">
-            <img src="{{ $themeLogo }}" alt="Toha Theme Logo">
-            Toha
-          </a>
-        </div>
-        <div class="col-md-4 text-center">{{ $copyrightNotice | markdownify }}</div>
-        <div class="col-md-4 text-end">
-          <a id="hugo" href="https://gohugo.io/" target="_blank" rel="noopener">{{ i18n "hugoAttributionText" }}
-          <img
-            src="{{ $hugoLogo }}"
-            alt="Hugo Logo"
-            height="18"
-          />
-          </a>
+      <div class="row">
+        <div class="col-md-12 text-center">
+          {{ $copyrightNotice | markdownify }}
         </div>
       </div>
     </div>

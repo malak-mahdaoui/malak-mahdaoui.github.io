@@ -1,0 +1,70 @@
+
+
+# ... reste de ton code (positions, responsibilities, etc.)
+section:
+  name: Experiences
+  id: experiences
+  enable: true
+  weight: 3
+  showOnNavbar: true
+  
+
+# Tes expériences réelles avec logos
+experiences:
+  - company:
+      name: CDTA (Centre de Développement des Technologies Avancées)
+      url: "https://www.cdta.dz"
+      location: Algiers, Algeria
+      logo: "images/c.png" # Chemin vers le logo CDTA
+      overview: "Focused on advanced research in Artificial Intelligence and motion analysis applied to security."
+    positions:
+      - designation: Research Intern
+        start: February 2026
+        end: Present 
+        responsibilities:
+          - Developing a pipeline for **Advanced Facial Anti-Spoofing** using Eulerian Video Magnification (EVM).
+          - Implementing pulse and breathing detection to distinguish between live faces and high-quality spoofs.
+          - Working with Deep Learning architectures (CNN, LSTM) and computer vision libraries (OpenCV, MTCNN).
+
+  - company:
+      name: CHU Sétif (University Hospital Center)
+      location: Sétif, Algeria
+      logo: "images/ch.jpeg" # Chemin vers le logo CHU
+      overview: "One of the largest hospital centers in Algeria, providing specialized medical care and research."
+    positions:
+      - designation: Medical Data Analyst Intern
+        start: June 2025
+        end: September 2025
+        responsibilities:
+          - Performed **Medical Data Analysis** to improve laboratory results tracking.
+          - Analyzed biochemistry datasets to identify trends and anomalies in analyzer performance.
+          - Collaborated with medical staff to understand data requirements for quality control (contributing to the BioStat-QC project logic).
+
+  - company:
+      name: Algérie Poste
+      url: "https://www.poste.dz"
+      location: Sétif
+      logo: "images/p.png"
+      overview: "The public authority responsible for postal and financial services in Algeria."
+    positions:
+      - designation: Information Technology Intern
+        start: July 2024
+        end: July 2024
+        responsibilities:
+          - Discovery of IT infrastructure and network management.
+          - Observation of database management systems and security protocols.
+          - Technical support and maintenance workflow discovery.
+
+  - company:
+      name: ByteCraft Scientific Club
+      location: ESTIN
+      logo: "images/b.jpeg" # Chemin vers le logo ByteCraft
+      overview: "A student-led scientific club focused on promoting computer science and innovation."
+    positions:
+      - designation: Event Organizer & Technical Lead
+        start: Nov 2022
+        end: 2024
+        responsibilities:
+          - Led the organization of **Nexzero CTF**, managing technical challenges.
+          - Realized the **IDEATECH #2** event, coordinating innovation projects.
+          - Mentored junior members in web development and cybersecurity basics.

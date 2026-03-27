@@ -1,0 +1,50 @@
+# data/en/sections/accomplishments.yaml
+section:
+  name: "Certifications & Courses"
+  id: accomplishments
+  enable: true
+  weight: 9
+  showOnNavbar: true
+
+accomplishments:
+  - name: "Associate Data Analyst"
+    timeline: "Sept 2025"
+    organization:
+      name: "DataCamp"
+    courseOverview: "Certification professionnelle : Nettoyage de données, SQL, Python et visualisation avec une approche business."
+    certificateURL: "AssociationDataAnalyse.pdf"
+
+  - name: "Natural Language Processing in Python"
+    timeline: "Sept 2025"
+    organization:
+      name: "DataCamp"
+    courseOverview: "Maîtrise du NLP : Tokenisation, NER et modèles de classification de texte supervisés."
+    certificateURL: "Natural Language Processing in Python.pdf"
+
+  - name: "Machine Learning: Supervised Learning"
+    timeline: "Sept 2025"
+    organization:
+      name: "University of Colorado Boulder"
+    courseOverview: "Algorithmes de régression, SVM et réseaux de neurones (Neural Networks)."
+    certificateURL: "Introduction to Machine Learning.pdf"
+
+  - name: "Artificial Intelligence (AI) Foundations"
+    timeline: "Sept 2025"
+    organization:
+      name: "IBM"
+    courseOverview: "Concepts fondamentaux de l'IA, Deep Learning et éthique algorithmique."
+    certificateURL: "Introduction to Artificial Intelligence (AI).pdf"
+
+  - name: "Applied Cryptography"
+    timeline: "July 2024"
+    organization:
+      name: "University of London"
+    courseOverview: "Sécurité de l'information : Chiffrement symétrique/asymétrique et signatures numériques."
+    certificateURL: "Introduction to Applied Cryptography.pdf"
+
+  - name: "Design Fundamentals"
+    timeline: "June 2025"
+    organization:
+      name: "TechZone Club"
+    courseOverview: "Principes du design visuel et UX/UI appliqués aux projets techniques."
+    certificateURL: "cert_designe.pdf"
