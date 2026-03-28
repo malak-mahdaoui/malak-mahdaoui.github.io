@@ -9,62 +9,47 @@ section:
 
 # Ta désignation actuelle
 designation: AI & Data Science Student
-# Ton école
+
+# Ton école (Correction de l'indentation ici)
 company:
-  name: ESTIN (Higher School of Computer Science)
+  name: ESTIN 
   url: "https://www.estin.dz"
 
 # Résumé professionnel basé sur ton profil
-summary: "Final-year State Engineer student at ESTIN, specializing in Advanced Artificial Intelligence and Data Science. I am passionate about building intelligent systems that solve real-world problems. My experience ranges from developing medical quality control applications (BioStat-QC) to implementing deep learning models for facial anti-spoofing and NLP. I have a strong background in Machine Learning, Reinforcement Learning (Q-Learning), and Computer Vision, with a focus on creating ethical and scalable AI solutions."
-
+summary: "Final year **AI & Data Science Engineer** student at ESTIN, specialized in designing scalable, intelligent systems for complex real world challenges. From developing specialized medical software (**BioStat-QC**) to implementing advanced **Deep Learning** models for facial anti-spoofing and NLP, I bridge the gap between academic research and industrial application. Expert in Machine Learning, Computer Vision, and Reinforcement Learning, I am committed to engineering ethical AI solutions that prioritize both performance and reliability."
 # Tes réseaux sociaux réels
 socialLinks:
-- name: Email
-  icon: "fas fa-envelope"
-  url: "mailto:m_mahdaoui@estin.dz"
+  - name: Email
+    icon: "fas fa-envelope"
+    url: "mailto:m_mahdaoui@estin.dz"
 
-- name: Github
-  icon: "fab fa-github"
-  url: "https://www.github.com/malak-mahdaoui"
+  - name: Github
+    icon: "fab fa-github"
+    url: "https://www.github.com/malak-mahdaoui"
 
-- name: LinkedIn
-  icon: "fab fa-linkedin"
-  url: "https://linkedin.com/in/malak-ines-mahdaoui-60a48b24a"
+  - name: LinkedIn
+    icon: "fab fa-linkedin"
+    url: "https://linkedin.com/in/malak-ines-mahdaoui-60a48b24a"
 
-# Ton CV (Assure-toi de mettre ton PDF dans le dossier static/files/ et de le nommer resume.pdf)
+# Ton CV (Assure-toi de mettre ton PDF dans le dossier static/files/ et de le nommer Academic CV.pdf)
 resourceLinks:
-- title: "Download My CV"
-  url: "files/Academic CV.pdf"
+  - title: "Download My CV"
+    url: "files/Academic CV.pdf"
 
-# Tes certifications "Hautes Distinctions" (On ne garde que le TOP 3)
+# Tes certifications et Soft Skills
 badges:
-- type: certification
-  name: "Data Science Specialist"
-  url: "#accomplishments" # Ce lien renvoie le visiteur vers la section détaillée
-  badge: "https://images.credly.com/size/680x680/images/e027514f-9d07-4b29-862f-fe21a8aaebf1/ae.png"
+  
+  - type: soft-skill-indicator
+    name: "Problem Solving"
+    percentage: 55
+    color: blue
 
-- type: certification
-  name: "AI & Machine Learning"
-  url: "#accomplishments"
-  badge: "https://images.credly.com/size/680x680/images/f4bf92ed-8985-40b2-bc07-2f9308780854/kubernetes-security-specialist-logo-examdev.png"
+  - type: soft-skill-indicator
+    name: "Adaptability"
+    percentage: 70
+    color: yellow
 
-# Tes Soft Skills (On se concentre sur tes forces d'ingénieure)
-- type: soft-skill-indicator
-  name: "Analytical Problem Solving"
-  percentage: 95
-  color: blue
-
-- type: soft-skill-indicator
-  name: "Strategic Leadership"
-  percentage: 90
-  color: yellow
-
-- type: soft-skill-indicator
-  name: "Fast Learning & Adaptability"
-  percentage: 95
-  color: green
-
-- type: soft-skill-indicator
-  name: "Technical Communication" # Capacité à expliquer l'IA simplement
-  percentage: 85
-  color: orange
+  - type: soft-skill-indicator
+    name: "Communication"
+    percentage: 88
+    color: green

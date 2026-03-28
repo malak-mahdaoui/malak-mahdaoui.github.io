@@ -1,226 +1,147 @@
-{{ $author:= site.Data.author }}
+{{ $author := site.Data.author }}
 {{ if (index site.Data site.Language.Lang).author }}
-{{ $author = (index site.Data site.Language.Lang).author }}
+  {{ $author = (index site.Data site.Language.Lang).author }}
 {{ end }}
 
-{{ $name:="Jane Doe" }}
+{{ $name := "Jane Doe" }}
 {{ if $author.nickname }}
-{{ $name = $author.nickname }}
+  {{ $name = $author.nickname }}
 {{ else if $author.name }}
-{{ $name = $author.name }}
+  {{ $name = $author.name }}
 {{ end }}
 
-{{ $sections:= site.Data.sections }}
+{{ $sections := site.Data.sections }}
 {{ if (index site.Data site.Language.Lang).sections }}
-{{ $sections = (index site.Data site.Language.Lang).sections }}
+  {{ $sections = (index site.Data site.Language.Lang).sections }}
 {{ end }}
 
-{{ $backgroundImage:= "/images/default-background.jpg" }}
-{{ if site.Params.background }}
-{{ $backgroundImage = site.Params.background }}
-{{ end }}
-
-{{ $darkBackgroundImage:= $backgroundImage }}
-{{ if site.Params.darkBackground }}
-{{ $darkBackgroundImage = site.Params.darkBackground }}
-{{ end }}
-
-{{ $authorImage:= "/images/default-avatar.png" }}
+{{/* Initialisation sécurisée de l'image */}}
+{{ $authorImage := false }}
 {{ if $author.image }}
-{{ $authorImage = $author.image }}
-{{ end }}
-{{ $authorImage := resources.Get $authorImage }}
-
-{{/* apply image processing. don't use "Fit" in svg or gif because its not supported */}}
-{{ if and $authorImage (and (ne $authorImage.MediaType.SubType "svg") ( ne $authorImage.MediaType.SubType "gif")) }}
-{{ $authorImage = $authorImage.Fit "148x148" }}
-{{ end }}
-{{/* get file that matches the filename as specified as src="" in shortcode */}}
-{{ $src := resources.Get $backgroundImage }}
-
-{{/* set image sizes, these are hardcoded for now, x dictates that images are resized to this width */}}
-
-{{ $tinyw := default "500x" }}
-{{ $smallw := default "800x" }}
-{{ $mediumw := default "1200x" }}
-{{ $largew := default "1500x" }}
-
-{{/* resize the src image to the given sizes */}}
-
-{{ $tiny := $src.Resize $tinyw }}
-{{ $small := $src.Resize $smallw }}
-{{ $medium := $src.Resize $mediumw }}
-{{ $large := $src.Resize $largew }}
-
-{{/* only use images smaller than or equal to the src (original) image size, as Hugo will upscale small images */}}
-{{/* set the sizes attribute to (min-width: 35em) 1200px, 100vw unless overridden in shortcode */}}
-
-{{ if lt $src.Width "500" }}
-{{ $tiny := $src}}
-{{ $small := $src}}
-{{ $medium := $src}}
-{{ $large := $src}}
+  {{ $authorImage = resources.Get $author.image }}
 {{ end }}
 
-{{ if lt $src.Width "800" }}
-{{ $small := $src}}
-{{ $medium := $src}}
-{{ $large := $src}}
-{{ end }}
-
-{{ if lt $src.Width "1200" }}
-{{ $medium := $src}}
-{{ $large := $src}}
-{{ end }}
-
-{{ if lt $src.Width "1500" }}
-{{ $large := $src}}
-{{ end }}
-
-{{/* get file that matches the filename as specified as src="" in shortcode */}}
-{{ $darkSrc := resources.Get $darkBackgroundImage }}
-
-{{/* resize the src image to the given sizes */}}
-
-{{ $darkTiny := $darkSrc.Resize $tinyw }}
-{{ $darkSmall := $darkSrc.Resize $smallw }}
-{{ $darkMedium := $darkSrc.Resize $mediumw }}
-{{ $darkLarge := $darkSrc.Resize $largew }}
-
-{{/* only use images smaller than or equal to the src (original) image size, as Hugo will upscale small images */}}
-{{/* set the sizes attribute to (min-width: 35em) 1200px, 100vw unless overridden in shortcode */}}
-
-{{ if lt $darkSrc.Width "500" }}
-{{ $darkTiny := $src}}
-{{ $darkSmall := $src}}
-{{ $darkMedium := $src}}
-{{ $darkLarge := $src}}
-{{ end }}
-
-{{ if lt $src.Width "800" }}
-{{ $darkSmall := $src}}
-{{ $darkMedium := $src}}
-{{ $darkLarge := $src}}
-{{ end }}
-
-{{ if lt $src.Width "1200" }}
-{{ $darkMedium := $src}}
-{{ $darkLarge := $src}}
-{{ end }}
-
-{{ if lt $src.Width "1500" }}
-{{ $darkLarge := $src}}
-{{ end }}
-
-<div class="container-fluid home" id="home">
+<div class="container-fluid home" id="home" style="min-height: 100vh; position: relative; overflow: hidden;">
   <style>
-    /* 0 to 299 */
-    #homePageBackgroundImageDivStyled {
-      background-image: url('{{ $tiny.RelPermalink }}');
+    /* ------------------ Background Animé Wavy ------------------ */
+    #wavyBackground {
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      z-index: -1;
+      /* Couleurs vives pour être sûr de voir l'effet */
+      background: linear-gradient(-45deg,  #23a6d5,#022132,#002834, #0f3c32, #002834);
+      background-size: 400% 400%;
+      animation: gradientMove 15s ease infinite;
     }
 
-    /* 300 to X */
-    @media (min-width: 500px) and (max-width: 800px) {
-
-      /* or 301 if you want really the same as previously.  */
-      #homePageBackgroundImageDivStyled {
-        background-image: url('{{ $small.RelPermalink }}');
-      }
+    @keyframes gradientMove {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
     }
 
-    @media (min-width: 801px) and (max-width: 1200px) {
-
-      /* or 301 if you want really the same as previously.  */
-      #homePageBackgroundImageDivStyled {
-        background-image: url('{{ $medium.RelPermalink }}');
-      }
+    /* Effet de lumière (Lighting) */
+    .light-overlay {
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: radial-gradient(circle at center, transparent 0%, rgba(0,0,0,0.4) 100%);
+      pointer-events: none;
     }
 
-    @media (min-width: 1201px) and (max-width: 1500px) {
-
-      /* or 301 if you want really the same as previously.  */
-      #homePageBackgroundImageDivStyled {
-        background-image: url('{{ $large.RelPermalink }}');
-      }
+    /* ------------------ Contenu ------------------ */
+    .home-content {
+      padding-top: 15vh;
+      color: #ffffff !important; /* Force le texte en blanc */
+      text-shadow: 0px 2px 10px rgba(0,0,0,0.3);
     }
 
-    @media (min-width: 1501px) {
-
-      /* or 301 if you want really the same as previously.  */
-      #homePageBackgroundImageDivStyled {
-        background-image: url('{{ $src.RelPermalink }}');
-      }
+    .profile-img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border: 5px solid rgba(255,255,255,0.3);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    margin-bottom: 20px;
+    
+    /* --- AJOUTS POUR CENTRER --- */
+    display: block;       /* Force l'image à prendre toute la ligne */
+    margin-left: auto;    /* Pousse l'image depuis la gauche */
+    margin-right: auto;   /* Pousse l'image depuis la droite */
+    border-radius: 50%;   /* Assure que l'image reste bien ronde */
+}
+    .typing-box {
+      font-size: 1.5rem;
+      font-weight: bold;
+      background: rgba(0, 0, 0, 0.2);
+      padding: 10px 30px;
+      border-radius: 50px;
+      display: inline-block;
+      margin-top: 20px;
+      border: 1px solid rgba(255,255,255,0.2);
     }
 
-    html[data-theme='dark'] {
+    .arrow-down {
+      margin-top: 50px;
+      font-size: 2.5rem;
+      color: white;
+      animation: bounce 2s infinite;
+      display: inline-block;
+    }
 
-      /* 0 to 299 */
-      #homePageBackgroundImageDivStyled {
-        background-image: url('{{ $darkTiny.RelPermalink }}');
-      }
-
-      /* 300 to X */
-      @media (min-width: 500px) and (max-width: 800px) {
-
-        /* or 301 if you want really the same as previously.  */
-        #homePageBackgroundImageDivStyled {
-          background-image: url('{{ $darkSmall.RelPermalink }}');
-        }
-      }
-
-      @media (min-width: 801px) and (max-width: 1200px) {
-
-        /* or 301 if you want really the same as previously.  */
-        #homePageBackgroundImageDivStyled {
-          background-image: url('{{ $darkMedium.RelPermalink }}');
-        }
-      }
-
-      @media (min-width: 1201px) and (max-width: 1500px) {
-
-        /* or 301 if you want really the same as previously.  */
-        #homePageBackgroundImageDivStyled {
-          background-image: url('{{ $darkLarge.RelPermalink }}');
-        }
-      }
-
-      @media (min-width: 1501px) {
-
-        /* or 301 if you want really the same as previously.  */
-        #homePageBackgroundImageDivStyled {
-          background-image: url('{{ $darkSrc.RelPermalink }}');
-        }
-      }
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+      40% { transform: translateY(-15px); }
+      60% { transform: translateY(-7px); }
     }
   </style>
-  <span class="on-the-fly-behavior"></span>
-  <div id="homePageBackgroundImageDivStyled" class="background container-fluid"></div>
-  <div class="container content text-center">
-    <img src="{{ $authorImage.RelPermalink }}" class="rounded-circle mx-auto d-block img-fluid" alt="Author Image" />
-    <h1 class="greeting"> {{ $author.greeting }} {{ $name }}</h1>
+
+  <div id="wavyBackground"></div>
+  <div class="light-overlay"></div>
+
+  <div class="container home-content text-center">
+    {{ if $authorImage }}
+      <img src="{{ $authorImage.RelPermalink }}" class="rounded-circle profile-img" alt="Profile">
+    {{ end }}
+
+    <h1 class="display-3 font-weight-bold">{{ $author.greeting }} {{ $name }}</h1>
+    
     {{ if $author.subtitle }}
-    <h2 class="greeting-subtitle">{{ $author.subtitle }}</h2>
+      <h2 class="h3">{{ $author.subtitle }}</h2>
     {{ end }}
-    <div class="typing-carousel">
-      <span id="typed" class="typed"></span>
-      <span class="ityped-cursor"></span>
+
+    <div class="typing-box">
+      <span id="typed-text"></span>
     </div>
-    <ul id="typing-carousel-data">
-      {{ if $author.summary }}
-      {{ range $author.summary }}
-      <li>{{ . }}</li>
-      {{ end}}
-      {{ end }}
-    </ul>
-    {{ if $sections }}
-    {{ range first 1 (where (sort $sections "section.weight") ".section.enable" true) }}
-    {{ $sectionID := replace (lower .section.name) " " "-" }}
-    {{ if .section.id }}
-    {{ $sectionID = .section.id }}
-    {{ end }}
-    <a href="#{{ $sectionID }}" class="arrow-center" aria-label="{{ i18n " read" }} {{ i18n "more" }} - {{ $name }}"> <i
-        class="arrow bounce fa fa-chevron-down"></i></a>
-    {{ end }}
-    {{ end }}
+
+    <br>
+    <a href="#about" class="arrow-down">
+      <i class="fa fa-chevron-down"></i>
+    </a>
   </div>
+
+  <ul id="typing-data" style="display:none;">
+    {{ range $author.summary }}<li>{{ . }}</li>{{ end }}
+  </ul>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const phrases = Array.from(document.querySelectorAll("#typing-data li")).map(li => li.textContent);
+      const target = document.getElementById("typed-text");
+      let pIdx = 0; let cIdx = 0; let deleting = false;
+
+      function typeEffect() {
+        const fullText = phrases[pIdx];
+        target.innerHTML = deleting ? fullText.substring(0, cIdx--) : fullText.substring(0, cIdx++);
+
+        let speed = deleting ? 50 : 100;
+        if (!deleting && cIdx > fullText.length) {
+          speed = 2000; deleting = true;
+        } else if (deleting && cIdx < 0) {
+          deleting = false; pIdx = (pIdx + 1) % phrases.length; speed = 500;
+        }
+        setTimeout(typeEffect, speed);
+      }
+      if(phrases.length) typeEffect();
+    });
+  </script>
 </div>

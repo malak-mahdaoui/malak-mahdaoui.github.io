@@ -17,7 +17,18 @@
     </script>
     {{ end }}
   </head>
-
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const bars = document.querySelectorAll(".progress-fill");
+    
+      bars.forEach(bar => {
+        const percentage = bar.getAttribute("data-percentage");
+        setTimeout(() => {
+          bar.style.width = percentage + "%";
+        }, 300);
+      });
+    });
+    </script>
   <body class="type-{{ .Page.Type }} kind-{{ .Page.Kind }}" data-bs-spy="scroll" data-bs-target="#TableOfContents" data-bs-offset="80">
     <div class="container-fluid bg-secondary wrapper">
       <!----- ADD NAVBAR --------------->

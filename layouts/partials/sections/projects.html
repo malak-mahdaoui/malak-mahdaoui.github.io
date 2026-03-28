@@ -3,15 +3,81 @@
   {{ $sectionID = .section.id }}
 {{ end }}
 
+<style>
+  /* 1. Reset row for Filterizr and add horizontal spacing */
+  .project-card-holder-{{ $sectionID }} {
+    display: block;
+    margin: 0 -15px; /* Adjust for internal padding */
+  }
+
+  /* 2. The Filter Item needs padding to create the 'mini distance' */
+  .filtr-item {
+    padding: 15px; /* This is the distance between cards */
+  }
+
+  /* 3. The Card: Forced Height & Design */
+  .custom-project-card {
+    transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+    border-radius: 15px;
+    background: #fff;
+    border: 1px solid rgba(0,0,0,0.08);
+    display: flex;
+    flex-direction: column;
+    
+    /* SAME TAILLE: Set a consistent height */
+    height: 300px; 
+    
+    padding: 25px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    position: relative;
+    overflow: hidden; /* Keeps everything inside the border radius */
+  }
+
+  /* 4. Hover Zoom & Shadow */
+  .custom-project-card:hover {
+    transform: translateY(-8px) scale(1.03);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.12);
+    border-color: #3498db;
+    z-index: 100;
+  }
+
+  .project-inner-content {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden; /* Prevents text from pushing the card height */
+  }
+
+  /* Summary Truncation: limits text to 4 lines so it doesn't break layout */
+  .card-text-fixed {
+    font-size: 0.95rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-bottom: 15px;
+  }
+
+  .project-bottom-meta {
+    margin-top: auto; /* Always sticks to the bottom */
+    background: #fff;
+    padding-top: 10px;
+  }
+
+  .project-icon-box {
+    font-size: 2.2rem;
+    color: #007bff;
+    margin-bottom: 12px;
+  }
+</style>
+
 <div class="container-fluid anchor pb-5 projects-section" id="{{ $sectionID }}">
   {{ if not (.section.hideTitle) }}
-    <h1 class="text-center">
-        <span id="{{ $sectionID }}"></span>{{ .section.name }}</h1>
-  {{ else }}
-    <h1 class="text-center" style="display: none">
-        <span id="{{ $sectionID }}"></span>{{ .section.name }}</h1>
+    <h1 class="text-center mb-5">{{ .section.name }}</h1>
   {{ end }}
-  <div class="container ms-auto text-center">
+
+  <div class="container ms-auto text-center mb-4">
     <div class="btn-group flex-wrap" role="group" id="project-filter-buttons-{{ $sectionID }}">
       {{ range .buttons }}
       <button type="button" class="btn btn-dark project-filtr-control" data-filter="{{ .filter }}" data-section="{{ $sectionID }}">
@@ -20,10 +86,40 @@
       {{ end }}
     </div>
   </div>
+
   <div class="container filtr-projects" data-section="{{ $sectionID }}">
     <div class="row" id="project-card-holder-{{ $sectionID }}">
       {{ range .projects }}
-        {{ partial "cards/project" . }}
+        <div class="col-lg-4 col-md-6 filtr-item" data-category="{{ delimit .tags "," }}">
+          <div class="custom-project-card">
+            <div class="project-inner-content">
+              
+              <div class="project-icon-box">
+                <i class="{{ if .icon }}{{ .icon }}{{ else }}fas fa-project-diagram{{ end }}"></i>
+              </div>
+
+              <h3 class="fw-bold h5">{{ .name }}</h3>
+              <p class="text-muted" style="font-size: 0.8rem; margin-bottom: 8px;">{{ .role }} | {{ .timeline }}</p>
+              
+              <p class="card-text text-secondary card-text-fixed">{{ .summary }}</p>
+              
+              <div class="project-bottom-meta">
+                <div class="mb-2">
+                  {{ range .tags }}
+                    <span class="badge rounded-pill bg-light text-dark border me-1" style="font-size: 0.7rem;">#{{ . }}</span>
+                  {{ end }}
+                </div>
+                
+                {{ if .repo }}
+                <a href="{{ .repo }}" target="_blank" class="text-decoration-none text-dark fw-bold small">
+                  <i class="fab fa-github"></i> Source Code
+                </a>
+                {{ end }}
+              </div>
+
+            </div>
+          </div>
+        </div>
       {{ end }}
     </div>
   </div>

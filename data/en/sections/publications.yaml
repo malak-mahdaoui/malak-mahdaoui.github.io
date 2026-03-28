@@ -6,7 +6,7 @@ section:
   weight: 6
   showOnNavbar: true
 
-# Filtres pour aider le recruteur
+# Filter buttons for recruiters
 buttons:
 - name: All
   filter: "all"
@@ -18,36 +18,34 @@ buttons:
   filter: "security"
 
 publications:
-  # 1. RAPPORT DE STAGE CHU (Terminé - Très important)
-  - title: "Analyse de Données Médicales : Optimisation du Suivi Biologique"
+  # 1. CHU INTERNSHIP (Medical Data)
+  - title: "Medical Data Analysis: Optimizing Biological Monitoring"
     publishedIn:
-      name: "Rapport de Stage - CHU Sétif"
-      date: "Septembre 2025"
+      name: "Internship Report - CHU Sétif"
+      date: "September 2025"
       url: "files/Rapport_de_stage_chu.pdf"
     authors:
       - name: "Malak Ines MAHDAOUI"
     paper:
-      summary: "Étude approfondie sur l'analyse des flux de données au sein du laboratoire de biochimie. Ce rapport détaille l'identification des anomalies de mesure et l'optimisation des processus de contrôle qualité."
-      url: "files/Attestation_stage_CHU.pdf"
+      summary: "In-depth study on data flow analysis in biochemistry labs, focusing on anomaly detection and quality control optimization."
     categories: ["health"]
     tags: ["Data Analysis", "Healthcare", "Statistics"]
 
-  # 2. RAPPORT REINFORCEMENT LEARNING (Terminé)
-  - title: "Apprentissage par Renforcement appliqué au Trafic Routier (SUMO)"
+  # 2. REINFORCEMENT LEARNING (SUMO)
+  - title: "Reinforcement Learning for Autonomous Road Traffic (SUMO)"
     publishedIn:
-      name: "Projet Académique - ESTIN"
-      date: "Décembre 2024"
+      name: "Academic Project - ESTIN"
+      date: "December 2024"
       url: "files/Reinforcement Learning for Lane-Changing Decisions on highways.pdf"
     authors:
       - name: "Malak Ines MAHDAOUI"
     paper:
-      summary: "Conception et entraînement d'un agent autonome capable de prendre des décisions de changement de voie. Comparaison des performances entre le Q-Learning classique et le Deep RL (PPO)."
-      url: "#"
+      summary: "Training autonomous agents for lane-changing decisions using Q-Learning and Deep RL (PPO) in simulated highway environments."
     categories: ["ai"]
     tags: ["Reinforcement Learning", "Python", "Simulation"]
 
-  # 3. ANTI-SPOOFING (En cours - Recherche)
-  - title: "Détection de Liveness par Grossissement Vidéo Eulérien (EVM)"
+  # 3. ANTI-SPOOFING (Research)
+  - title: "Liveness Detection via Eulerian Video Magnification (EVM)"
     publishedIn:
       name: "Research Paper (In Progress)"
       date: "2026"
@@ -55,21 +53,19 @@ publications:
     authors:
       - name: "Malak Ines MAHDAOUI"
     paper:
-      summary: "Projet de recherche sur la lutte contre l'usurpation d'identité faciale. Utilisation de l'EVM pour amplifier les micro-mouvements (pouls) afin de distinguer un humain d'une photo."
-      url: "#"
+      summary: "Research on preventing facial spoofing by using EVM to amplify micro-motions (pulse) to distinguish real humans from photos."
     categories: ["ai", "security"]
     tags: ["Computer Vision", "Deep Learning", "Anti-Spoofing"]
 
-  # 4. RAPPORT SÉCURITÉ / ALGÉRIE POSTE (Terminé)
-  - title: "Audit et Observation des Infrastructures Réseaux et Sécurité"
+  # 4. SECURITY / ALGERIE POSTE
+  - title: "Network Infrastructure and Security Audit"
     publishedIn:
-      name: "Rapport de Stage - Algérie Poste"
-      date: "Juillet 2024"
+      name: "Internship Report - Algérie Poste"
+      date: "July 2024"
       url: "files/Rapport_de_stage_sec.pdf"
     authors:
       - name: "Malak Ines MAHDAOUI"
     paper:
-      summary: "Analyse de l'architecture réseau et des protocoles de sécurité utilisés dans une grande institution financière publique. Focus sur la gestion des bases de données et la maintenance préventive."
-      url: "files/Att_stage_sec copy.pdf"
+      summary: "Observation and audit of network infrastructures, focusing on security protocols and system architecture."
     categories: ["security"]
     tags: ["Cybersecurity", "Network", "Infrastructure"]

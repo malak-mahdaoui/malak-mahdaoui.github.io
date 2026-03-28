@@ -1,34 +1,209 @@
-{{ $sectionID := replace (lower .section.name) " " "-"  }}
-{{ if .section.id }}
-  {{ $sectionID = .section.id }}
-{{ end }}
+<section id="experiences" style="background: #f4f4f9; padding: 60px 0; display: flex; flex-direction: column; align-items: center; width: 100%;">
+  
+  <h1 class="section-title" style="text-align: center; color: #022132; font-size: 2.5rem; margin-bottom: 50px; width: 100%;">Experience</h1>
 
-<div class="container-fluid anchor pb-5 experiences-section">
-  {{ if not (.section.hideTitle) }}
-    <h1 class="text-center">
-        <span id="{{ $sectionID }}"></span>{{ .section.name }}</h1>
-  {{ else }}
-    <h1 class="text-center" style="display: none">
-        <span id="{{ $sectionID }}"></span>{{ .section.name }}</h1>
-  {{ end }}
+  <style>
+    .timeline-container {
+      position: relative;
+      max-width: 1000px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+    .timeline-container::before {
+      content: '';
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 4px;
+      height: 100%;
+      background: #022132;
+      z-index: 1;
+    }
+    .timeline-row {
+      display: flex;
+      align-items: center;
+      position: relative;
+      margin-bottom: 40px;
+      width: 100%;
+      justify-content: center;
+    }
+    .timeline-circle {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 36px;
+      height: 36px;
+      background: #022132;
+      border-radius: 50%;
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-weight: bold;
+      z-index: 10;
+      box-shadow: 0 0 0 4px #f4f4f9;
+    }
+    .experience-card {
+      width: 44%;
+      perspective: 1000px;
+      min-height: 220px;
+      opacity: 0;
+      transition: all 0.8s ease;
+      z-index: 5;
+    }
+    .experience-card.left { transform: translateX(-30px); margin-right: auto; }
+    .experience-card.right { transform: translateX(30px); margin-left: auto; }
+    .experience-card.visible { opacity: 1; transform: translateX(0); }
+    .experience-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      min-height: 220px;
+      transition: transform 0.6s;
+      transform-style: preserve-3d;
+    }
+    .experience-card:hover .experience-inner {
+      transform: rotateY(180deg);
+    }
+    .experience-front, .experience-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      background: rgb(196, 195, 195);
+      border-radius: 15px;
+      padding: 20px;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+      box-sizing: border-box;
+    }
+    .experience-back {
+      transform: rotateY(180deg);
+      background: #022132;
+      color: white;
+      overflow-y: auto;
+    }
+    .company-logo {
+      width: 45px;
+      height: 45px;
+      object-fit: contain;
+      margin-bottom: 10px;
+    }
+    @media (max-width: 768px) {
+      .timeline-container::before { left: 20px; transform: none; }
+      .timeline-circle { left: 20px; transform: translateX(-50%); }
+      .timeline-row { justify-content: flex-start; padding-left: 50px; }
+      .experience-card { width: 95%; }
+      .experience-card.left, .experience-card.right { margin-left: 0; transform: translateX(20px); }
+    }
+  </style>
 
-  <div class="container timeline text-justify">
-   {{ $totalExperiences:= len .experiences }}
-   {{ range $index,$experience:= .experiences }}
-     {{ if eq (mod $index 2) 0 }}
-       <div class="row align-items-center  d-flex">
-         {{ partial "sections/experiences/vertical-line.html" $index }}
-         {{ partial "sections/experiences/positions.html" $experience }}
-       </div>
-     {{else}}
-       <div class="row align-items-center justify-content-end d-flex">
-         {{ partial "sections/experiences/positions.html" $experience }}
-         {{ partial "sections/experiences/vertical-line.html" $index }}
-       </div>
-     {{ end }}
-     {{ if lt $index (sub $totalExperiences 1) }}
-       {{ partial "sections/experiences/horizontal-line.html" $index }}
-     {{ end }}
-   {{ end }}
+  <div class="timeline-container">
+
+    <div class="timeline-row">
+      <div class="timeline-circle">1</div>
+      <div class="experience-card left">
+        <div class="experience-inner">
+          <div class="experience-front">
+            <img src="images/c.png" alt="CDTA" class="company-logo">
+            <h3 style="margin: 0; font-size: 1.1em;color: #61dafb;">CDTA</h3>
+            <p style="font-size: 0.9em; margin: 5px 0;color: #61dafb;"><strong>Research Intern</strong></p>
+            <p style="font-size: 0.8em; color: #777;">Feb 2026 - Present</p>
+          </div>
+          <div class="experience-back">
+            <h4 style="margin: 0 0 10px 0; font-size: 1em;color : #f4f4f9;">Key Responsibilities:</h4>
+            <ul style="font-size: 0.8em; padding-left: 15px; margin: 0;">
+              <li>Advanced Facial Anti-Spoofing research.</li>
+              <li>Implementation of Pulse & Breathing detection systems.</li>
+              <li>Video analysis for biometric feature extraction.</li>
+              <li>Collaboration on advanced AI algorithms for security applications.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="timeline-row">
+      <div class="timeline-circle">2</div>
+      <div class="experience-card right">
+        <div class="experience-inner">
+          <div class="experience-front">
+            <img src="images/ch.jpeg" alt="CHU" class="company-logo">
+            <h3 style="margin: 0; font-size: 1.1em;color: #61dafb;">University Hospital (CHU) Sétif</h3>
+            <p style="font-size: 0.9em; margin: 5px 0;color: #61dafb;"><strong>Data Analyst</strong></p>
+            <p style="font-size: 0.8em; color: #777;">Jun 2025 - Sep 2025</p>
+          </div>
+          <div class="experience-back">
+            <h4 style="margin: 0 0 10px 0; font-size: 1em;color : #f4f4f9;">Key Responsibilities:</h4>
+            <ul style="font-size: 0.8em; padding-left: 15px; margin: 0;">
+              <li>Analyzed Medical Data Trends for clinical optimization.</li>
+              <li>Developed comprehensive reports and dashboards for medical staff.</li>
+              <li>Applied statistical methods and basic AI to derive healthcare insights.</li>
+              <li>Streamlined data collection processes for improved accuracy.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="timeline-row">
+      <div class="timeline-circle">3</div>
+      <div class="experience-card left">
+        <div class="experience-inner">
+          <div class="experience-front">
+            <img src="images/p.png" alt="Algérie Poste" class="company-logo">
+            <h3 style="margin: 0; font-size: 1.1em;color: #61dafb;">Algérie Poste</h3>
+            <p style="font-size: 0.9em; margin: 5px 0;color: #61dafb;"><strong>IT Intern</strong></p>
+            <p style="font-size: 0.8em; color: #777;">Jul 2024</p>
+          </div>
+          <div class="experience-back">
+            <h4 style="margin: 0 0 10px 0; font-size: 1em;color : #f4f4f9;">Key Responsibilities:</h4>
+            <ul style="font-size: 0.8em; padding-left: 15px; margin: 0;">
+              <li>Exploration of IT infrastructure and network management.</li>
+              <li>Observation of database management systems and security protocols.</li>
+              <li>Support in technical maintenance and workflow optimization.</li>
+              <li>Introduction to automation and IT process improvement.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="timeline-row">
+      <div class="timeline-circle">4</div>
+      <div class="experience-card right">
+        <div class="experience-inner">
+          <div class="experience-front">
+            <img src="images/b.jpeg" alt="ByteCraft" class="company-logo">
+            <h3 style="margin: 0; font-size: 1.1em;color: #61dafb;">ByteCraft Scientific Club</h3>
+            <p style="font-size: 0.9em; margin: 5px 0;color: #61dafb;"><strong>Event Organizer & Technical Lead</strong></p>
+            <p style="font-size: 0.8em; color: #777;">Nov 2022 - 2024</p>
+          </div>
+          <div class="experience-back">
+            <h4 style="margin: 0 0 10px 0; font-size: 1em;color : #f4f4f9;">Key Responsibilities:</h4>
+            <ul style="font-size: 0.8em; padding-left: 15px; margin: 0;">
+              <li>Led the organization of Nexzero CTF, managing technical challenges.</li>
+              <li>Orchestrated the IDEATECH event, coordinating innovation projects.</li>
+              <li>Mentored junior members in web development and cybersecurity basics.</li>
+              <li>Facilitated workshops on technical problem-solving and IT logic.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
   </div>
-</div>
+</section>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.experience-card').forEach(card => observer.observe(card));
+</script>

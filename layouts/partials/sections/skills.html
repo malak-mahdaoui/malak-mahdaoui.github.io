@@ -1,35 +1,188 @@
-{{ $sectionID := replace (lower .section.name) " " "-"  }}
+{{ $sectionID := replace (lower .section.name) " " "-" }}
 {{ if .section.id }}
   {{ $sectionID = .section.id }}
 {{ end }}
 
 <div class="container-fluid anchor pb-5 skills-section" id="{{ $sectionID }}">
   {{ if not (.section.hideTitle) }}
-    <h1 class="text-center">
-        <span id="{{ $sectionID }}"></span>{{ .section.name }}</h1>
-  {{ else }}
-    <h1 class="text-center" style="display: none">
-        <span id="{{ $sectionID }}"></span>{{ .section.name }}</h1>
+    <h1 class="text-center mb-5"><span id="{{ $sectionID }}"></span>{{ .section.name }}</h1>
   {{ end }}
-  {{ if .section.filter }}
-  <div class="container ms-auto text-center">
-    <div class="btn-group flex-wrap" role="group" id="skill-filter-buttons">
-      {{ range .buttons }}
-      <button type="button" class="btn btn-dark skill-filtr-control" data-filter="{{ .filter }}">
-        {{ .name }}
-      </button>
-      {{ end }}
+
+  <div class="skills-layout">
+    <div class="skills-list-container">
+      <ul class="skills-bullet-list">
+        {{ range .skills }}
+          <li class="skill-item">
+            <span class="skill-marker"></span>
+            <div class="skill-details">
+              <span class="skill-name">{{ .name }}</span>
+              <p class="skill-desc">{{ .description }}</p>
+            </div>
+          </li>
+        {{ end }}
+      </ul>
     </div>
-  </div>
-  <div class="container d-flex-block filtr-skills">
-    <div class="row" id="skill-card-holder" style="margin-left:unset">
-  {{ else }}
-  <div class="container d-flex-block">
-    <div class="row" id="primary-skills">
-  {{ end }}
-      {{ range .skills }}
-      {{ partial "cards/skill.html" . }}
-    {{ end }}
+
+    <div class="skills-orbit-container">
+      <div class="skills-orbit" id="skillsOrbit">
+        {{ range .skills }}
+          <div class="skill-icon-2d">
+            {{/* Correction : Utilisation de resources.Get pour le dossier assets */}}
+            {{ $img := resources.Get (printf "images/sections/skills/%s" .image) }}
+            {{ if $img }}
+            <img src="{{ $img.RelPermalink }}" alt="{{ .name }}" class="orbit-icon">
+          {{ else }}
+            <span style="font-size: 9px; font-weight: bold; color: #ccc;">{{ .name }}</span>
+          {{ end }}
+          </div>
+        {{ end }}
+      </div>
     </div>
   </div>
 </div>
+
+<style>
+/* Layout général */
+.skills-layout {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 50px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Liste de compétences */
+.skills-list-container {
+  flex: 1;
+  max-width: 500px;
+}
+
+.skills-bullet-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.skill-item {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 25px;
+}
+
+.skill-marker {
+  width: 14px;
+  height: 14px;
+  background-color: #022132;
+  border-radius: 50%;
+  margin-top: 6px;
+  margin-right: 15px;
+  flex-shrink: 0;
+}
+
+.skill-name {
+  font-weight: 700;
+  color: #61dafb;
+  font-size: 1.1rem;
+}
+
+.skill-desc {
+  color: #555;
+  font-size: 0.9rem;
+  margin: 2px 0 0 0;
+}
+
+/* Orbite des compétences */
+.skills-orbit-container {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 450px;
+  overflow: visible;
+}
+
+.skills-orbit {
+  width: 350px;
+  height: 350px;
+  border: 1px dashed rgba(2,33,50,0.2);
+  border-radius: 50%;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: rotateOrbit 30s linear infinite;
+}
+
+/* Icônes sur l’orbite */
+.skill-icon-2d {
+  position: absolute;
+  width: 70px;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: white;
+  border: 2px solid #e0e0e0;
+  border-radius: 50%;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+  transition: all 0.3s ease;
+  overflow: hidden;
+  animation: counterRotateIcon 30s linear infinite;
+}
+
+.skill-icon-2d:hover {
+  transform: scale(1.1);
+  border-color: #022132;
+  z-index: 100;
+}
+
+.orbit-icon {
+  width: 45px;
+  height: 45px;
+  object-fit: contain;
+}
+
+/* Animations */
+@keyframes rotateOrbit {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes counterRotateIcon {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(-360deg); }
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+  .skills-layout {
+    flex-direction: column-reverse;
+    gap: 30px;
+  }
+  .skills-list-container {
+    width: 100%;
+    max-width: 100%;
+    padding: 0 20px;
+  }
+}
+</style>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  const orbit = document.getElementById("skillsOrbit");
+  const icons = orbit.querySelectorAll(".skill-icon-2d");
+  const total = icons.length;
+  const radius = 175; // Rayon (350 / 2)
+
+  icons.forEach((icon, i) => {
+    const angle = (2 * Math.PI / total) * i;
+    const x = radius * Math.cos(angle);
+    const y = radius * Math.sin(angle);
+
+    // Positionnement précis sur le tracé de l'orbite
+    icon.style.left = `calc(50% + ${x}px - 35px)`;
+    icon.style.top = `calc(50% + ${y}px - 35px)`;
+  });
+});
+</script>
